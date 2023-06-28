@@ -16,4 +16,4 @@ jobs:
       - name: Install Deps
         run: pip3 install -r requirements.txt
       - name: Run Script
-        run: python3 main.py ${{ secrets.TOKEN }}
+        run: python3 main.py ${{ secrets.GITHUB_TOKEN }}
