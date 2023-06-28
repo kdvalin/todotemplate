@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+import os
+import yaml
+import datetime as dt
+
+from github import Github, Auth
+from cron_validator import CronValidator
+
+
+GITHUB_TOKEN=os.environ.get("GITHUB_TOKEN")
+REPO_ID = int(os.environ.get("GITHUB_REPOSITORY_ID", "-1"))
+REPO_OWNER = os.environ.get("GITHUB_REPOSITORY_OWNER", "Null")
+
+auth = Auth.Token(GITHUB_TOKEN)
+gh = Github(auth=auth)
+repo = gh.get_repo(REPO_ID)
+
+tasks = yaml.safe_load("recurring_tasks.yml")
+
+now = dt.datetime.utcnow()
+
+for task in tasks:
+    if CronValidator.match_datetime(task['schedule'], now):
+        repo.create_issue(
+            title=task['title'],
+            body=task['description'],
+            labels=task['labels'],
+            assignee=REPO_OWNER
+        )

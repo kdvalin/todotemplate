@@ -1,0 +1,16 @@
+- title: Pay Electric Bill
+  schedule: "* * 30 * *"
+  description: |
+    Pay Electricty
+  labels:
+    - backlog
+    - bills
+    - electric
+- title: Send Mom a Happy Birthday
+  schedule: "* * 1 1 *"
+  description: |
+    It's Mom's birthday!
+  labels:
+    - backlog
+    - family
+    - mom
