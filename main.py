@@ -16,7 +16,8 @@ auth = Auth.Token(GITHUB_TOKEN)
 gh = Github(auth=auth)
 repo = gh.get_repo(REPO_ID)
 
-tasks = yaml.safe_load("recurring_tasks.yml")
+with open("recurring_tasks.yml") as f:
+    tasks = yaml.safe_load(f)
 
 now = dt.datetime.utcnow()
 
