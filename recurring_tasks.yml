@@ -14,3 +14,11 @@
     - backlog
     - family
     - mom
+- title: Call Dad
+  schedule: "* * 27 6 *"
+  description: |
+    Have a nice monthly chat
+  labels:
+    - backlog
+    - family
+    - dad
