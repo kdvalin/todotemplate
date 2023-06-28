@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import yaml
 import datetime as dt
 
 from github import Github, Auth
 from cron_validator import CronValidator
 
-
-GITHUB_TOKEN=os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN=sys.argv[1]
 REPO_ID = int(os.environ.get("GITHUB_REPOSITORY_ID", "-1"))
 REPO_OWNER = os.environ.get("GITHUB_REPOSITORY_OWNER", "Null")
 
